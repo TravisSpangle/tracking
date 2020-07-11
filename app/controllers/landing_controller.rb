@@ -4,4 +4,7 @@ class LandingController < ApplicationController
   def home
     @coupons = [:free_large, :two_medium, :two_toppings]
   end
+
+  def contact
+  end
 end

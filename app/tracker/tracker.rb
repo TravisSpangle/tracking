@@ -6,7 +6,7 @@ module Tracker
   end
 
   def load_tracker_method
-   # return unless klass_exist? && method_exist?
+    return unless klass_exist? && method_exist?
     klass.instance_method(action_name).bind(self).call
   end
 
@@ -19,7 +19,6 @@ module Tracker
   end
 
   def klass_exist?
-    # Object.const_defined?(klass_name)
     defined?(klass_name)
   end
 

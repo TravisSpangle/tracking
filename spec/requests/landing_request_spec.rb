@@ -15,6 +15,13 @@ RSpec.describe "Landings", type: :request do
       expect(File.exist?(file_path)).to be_truthy
       expect(File.open(file_path).read).to match(/user has \d+ coupons/)
     end
+
+    it "does not track contact page" do
+      get "/contact"
+
+      expect(response).to have_http_status(:success)
+      expect(File.exist?(file_path)).to be_falsey
+    end
   end
 
 end
