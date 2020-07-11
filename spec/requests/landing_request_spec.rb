@@ -13,6 +13,7 @@ RSpec.describe "Landings", type: :request do
 
       expect(response).to have_http_status(:success)
       expect(File.exist?(file_path)).to be_truthy
+      expect(File.open(file_path).read).to match(/user has \d+ coupons/)
     end
   end
 

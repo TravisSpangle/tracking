@@ -1,5 +1,7 @@
 class LandingController < ApplicationController
+  include Tracker
+
   def home
-    Tracker.send('user has landed on home')
+    @coupons = [:free_large, :two_medium, :two_toppings]
   end
 end
