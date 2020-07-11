@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Our controller methods are overrun with tracking calls and other side effects of a request that should not impact or be apart of the main code handeling a request.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This application is the first iteration of a tracking gem that allows
+* seperating the domain of tracking
+* binding that code to the request to access instance variables, method calls, etc.
