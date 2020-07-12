@@ -13,8 +13,27 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+module TrackingSpec
+  def method_missing(m, *args, &block)
+    return super unless m.to_s.start_with?(/track_/)
+
+    action = m[6..-1] # Remove track_
+    subject.instance_method(action).bind(self).call
+  end
+end
+
+RSpec.shared_context "tracker setup" do
+  let(:tracker) { spy('tracker') }
+end
+
 RSpec.configure do |config|
+  config.include_context "tracker setup", type: :tracker
   config.before(:context, type: :tracker) do |ex|
+    self.class.include TrackingSpec
+  end
+  config.before(:example, type: :tracker) do |ex|
+    stub_const('Uni::Tracker', tracker)
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
