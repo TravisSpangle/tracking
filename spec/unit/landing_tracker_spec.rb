@@ -10,5 +10,12 @@ RSpec.describe LandingTracker, type: :tracker do
 
     expect(tracker).to have_received(:report).with('user has landed on home')
     expect(tracker).to have_received(:report).with("user has #{@coupons.length} coupons")
+
+    # What I'd like
+    # @coupons = []
+    # track_home
+    #
+    # expect(tracker).to have_received(:report).with('user has landed on home')
+    # expect(tracker).to have_received(:report).with("user has #{@coupons.length} coupons")
   end
 end
